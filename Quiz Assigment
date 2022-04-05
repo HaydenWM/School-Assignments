@@ -1,0 +1,209 @@
+package Quaz;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+
+
+public class qiz {
+	public static JFrame MainFrame;
+	public static JPanel MainPanel;
+	
+	//Labels
+	public static JLabel Title_Slide1;
+	public static JLabel Title2_Slide1;
+	public static JLabel Title3_Slide1;
+	public static JLabel Question_Slide2;
+	public static JLabel Question_Slide3;
+	
+	//Buttons
+	public static JButton Start_Button;
+	public static JButton Red_Button;
+	public static JButton Green_Button;
+
+	//Separator
+	public static JSeparator Sep_Slide2;
+	
+	
+	
+	public static void main(String[] args) {
+		GUI();
+	/*
+	 	SLIDE_ONE();
+		SLIDE_TWO();
+		SLIDE_THREE();
+		SLIDE_FOUR();
+		SLIDE_FIVE();
+		SLIDE_SIX();
+		SLIDE_SEVEN();
+		*/
+	}
+
+	public static void GUI() {//this is where i make all of my swing stuff and juist set them to visible false
+		
+		// makes Frame thats used throughout
+		MainFrame = new JFrame("Quiz");
+		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MainFrame.setSize(800, 500);
+		
+		// makes panel used throughout
+		MainPanel = new JPanel();
+		MainPanel.setBackground(Color.LIGHT_GRAY);
+		MainFrame.add(MainPanel);	
+		MainPanel.setLayout(null);
+		
+		
+		//Title Slide
+		
+		//Labels
+			Title_Slide1 = new JLabel("QUIZ");
+			Title_Slide1.setFont(new Font("Serif", Font.BOLD, 150));
+			Title_Slide1.setBounds(25, 100, 400, 200);
+			Title_Slide1.setVisible(false);
+			MainPanel.add(Title_Slide1);
+
+			Title2_Slide1 = new JLabel("Connor's");
+			Title2_Slide1.setFont(new Font("Comic Sans", Font.BOLD, 70));
+			Title2_Slide1.setBounds(10, 10, 400, 200);
+			Title2_Slide1.setVisible(false);
+			MainPanel.add(Title2_Slide1);
+		
+			//adds buton to title page
+			Start_Button = new JButton("Start");
+			Start_Button.setBounds(150, 350, 500, 30);
+			Start_Button.setVisible(false);
+			MainPanel.add(Start_Button);
+		
+			//all of this adds picture
+			BufferedImage img1 = null;
+			try {
+			img1 = ImageIO.read(new File("Connor.jpeg"));
+			} catch (IOException e) {
+		    e.printStackTrace();
+			}
+		
+			Image dimg = img1.getScaledInstance(250,200, 100);
+		
+			//Creating image icons
+			ImageIcon image1 = new ImageIcon(dimg);
+	
+			//Actaully adds picture 
+			Title3_Slide1 = new JLabel(image1);
+			Title3_Slide1.setBounds(450, 100, 250, 200);
+			Title3_Slide1.setVisible(false);
+			MainPanel.add(Title3_Slide1);
+		
+		//Slide 2
+		
+			Question_Slide2 = new JLabel("What is Connors Favorite Color?");
+			Question_Slide2.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide2.setBounds(25, 10, 700, 100);
+			Question_Slide2.setVisible(false);
+			MainPanel.add(Question_Slide2);
+			
+			Sep_Slide2 = new JSeparator();
+			Sep_Slide2.setBounds(10, 100, 700, 10);
+			Sep_Slide2.setForeground(Color.black);
+			MainPanel.add(Sep_Slide2);
+			Sep_Slide2.setVisible(false);
+			
+			Red_Button = new JButton("Red");
+			Red_Button.setBounds(100, 150, 200, 200);
+			Red_Button.setVisible(false);
+			Red_Button.setFont(new Font("Serif", Font.PLAIN, 50));
+			Red_Button.setBackground(Color.RED);
+			MainPanel.add(Red_Button);
+			
+			Green_Button = new JButton("Green");
+			Green_Button.setBounds(700, 150, 200, 200);
+			Green_Button.setVisible(false);
+			Green_Button.setFont(new Font("Serif", Font.PLAIN, 50));
+			Green_Button.setBackground(Color.GREEN);
+			MainPanel.add(Green_Button);
+			
+		//Slide 3
+			Question_Slide3 = new JLabel("What Is Connors Last Name?");
+			Question_Slide3.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide3.setBounds(25, 10, 700, 100);
+			Question_Slide3.setVisible(false);
+			MainPanel.add(Question_Slide3);
+
+			
+			
+			
+		SLIDE_ONE();
+	}
+
+	public static void SLIDE_ONE() {
+	
+		MainFrame.setVisible(true);
+		MainPanel.setVisible(true);
+		Title_Slide1.setVisible(true);
+		Title2_Slide1.setVisible(true);
+		Title3_Slide1.setVisible(true);
+		Start_Button.setVisible(true);
+		
+		Start_Button.addActionListener((ActionEvent f) -> {
+		SLIDE_TWO();
+		});
+	}
+	
+		
+		
+
+	
+	public static void SLIDE_TWO() {
+		
+		//disable last slide
+		Title_Slide1.setVisible(false);
+		Title2_Slide1.setVisible(false);
+		Start_Button.setVisible(false);
+		Title3_Slide1.setVisible(false);
+
+		//enable this slide
+		Question_Slide2.setVisible(true);
+		Sep_Slide2.setVisible(true);
+		Red_Button.setVisible(true);
+		Red_Button.addActionListener((ActionEvent g) -> {
+			SLIDE_THREE();
+			});
+		
+		Green_Button.setVisible(false);
+		Green_Button.addActionListener((ActionEvent g) -> {
+			SLIDE_THREE();
+			});
+
+
+		
+	}
+	
+	public static void SLIDE_THREE() {
+		//disable last slide
+		Question_Slide2.setVisible(false);
+		Sep_Slide2.setVisible(false);
+		Red_Button.setVisible(false);
+		Green_Button.setVisible(false);
+		
+		//enable this slide
+		Question_Slide3.setVisible(true);
+
+	}
+	public static void SLIDE_FOUR() {}
+	public static void SLIDE_FIVE() {}
+	public static void SLIDE_SIX() {}
+	public static void SLIDE_SEVEN() {}
+}
+	
+
