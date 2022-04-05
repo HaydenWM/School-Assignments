@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
 
 
 public class qiz {
@@ -27,28 +28,36 @@ public class qiz {
 	public static JLabel Title3_Slide1;
 	public static JLabel Question_Slide2;
 	public static JLabel Question_Slide3;
+	public static JLabel Question_Slide4;
+	public static JLabel Question_Slide5;
+	public static JLabel Question_Slide6;
+	public static JLabel Question_Slide7;
+	public static JLabel Question_Slide8;
+	public static JLabel Question_Slide9;
+	public static JLabel Question_Slide10;
+
+
 	
 	//Buttons
 	public static JButton Start_Button;
 	public static JButton Red_Button;
 	public static JButton Green_Button;
-
+	public static JButton End_Button;
+	public static JButton Submit_Button1;
 	//Separator
 	public static JSeparator Sep_Slide2;
 	
+	//TextField
+	public static JTextField Answer_Slide3;
+	public static JTextField Answer_Slide4;
 	
 	
-	public static void main(String[] args) {
+	
+	
+	
+	public static void main(String[] args) 
+	{
 		GUI();
-	/*
-	 	SLIDE_ONE();
-		SLIDE_TWO();
-		SLIDE_THREE();
-		SLIDE_FOUR();
-		SLIDE_FIVE();
-		SLIDE_SIX();
-		SLIDE_SEVEN();
-		*/
 	}
 
 	public static void GUI() {//this is where i make all of my swing stuff and juist set them to visible false
@@ -64,7 +73,15 @@ public class qiz {
 		MainFrame.add(MainPanel);	
 		MainPanel.setLayout(null);
 		
-		
+		//last more than one slide
+		//These items stay until score tab
+				End_Button = new JButton("END");
+				End_Button.setBounds(25, 425, 75, 20);
+				End_Button.setVisible(false);
+				End_Button.addActionListener((ActionEvent a) -> {
+					MainFrame.dispose();
+				});
+		MainPanel.add(End_Button);
 		//Title Slide
 		
 		//Labels
@@ -127,7 +144,7 @@ public class qiz {
 			MainPanel.add(Red_Button);
 			
 			Green_Button = new JButton("Green");
-			Green_Button.setBounds(700, 150, 200, 200);
+			Green_Button.setBounds(500, 150, 200, 200);
 			Green_Button.setVisible(false);
 			Green_Button.setFont(new Font("Serif", Font.PLAIN, 50));
 			Green_Button.setBackground(Color.GREEN);
@@ -139,9 +156,61 @@ public class qiz {
 			Question_Slide3.setBounds(25, 10, 700, 100);
 			Question_Slide3.setVisible(false);
 			MainPanel.add(Question_Slide3);
-
 			
+			Answer_Slide3 = new JTextField();
+			Answer_Slide3.setBounds(100, 150, 500, 200);
+			Answer_Slide3.setFont(new Font("Serif", Font.BOLD, 100));
+			MainPanel.add(Answer_Slide3);
+			Answer_Slide3.setVisible(false);
 			
+			Submit_Button1 = new JButton("Sumbit");
+			Submit_Button1.setBounds(125, 425, 75, 20);
+			Submit_Button1.setVisible(false);
+			MainPanel.add(Submit_Button1);
+			
+		//Slide 4 
+			Answer_Slide4 = new JTextField();
+			Answer_Slide4.setBounds(100, 150, 500, 200);
+			Answer_Slide4.setFont(new Font("Serif", Font.BOLD, 100));
+			MainPanel.add(Answer_Slide4);
+			Answer_Slide4.setVisible(false);
+			
+			Question_Slide4 = new JLabel("What is Connors Favourite Food?");
+			Question_Slide4.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide4.setBounds(25, 10, 700, 100);
+			Question_Slide4.setVisible(false);
+			MainPanel.add(Question_Slide4);
+	
+		//Slide 5
+			Question_Slide5 = new JLabel("What are Connors Political Belifes");
+			Question_Slide5.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide5.setBounds(25, 10, 700, 100);
+			Question_Slide5.setVisible(false);
+			MainPanel.add(Question_Slide5);
+		//Slide 6
+			Question_Slide6 = new JLabel("What is Connors Favourite Game?");
+			Question_Slide6.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide6.setBounds(25, 10, 700, 100);
+			Question_Slide6.setVisible(false);
+			MainPanel.add(Question_Slide6);
+		//Slide 7
+			Question_Slide7 = new JLabel("If Connor had to choose 2, what ones would he pick?");
+			Question_Slide7.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide7.setBounds(25, 10, 700, 100);
+			Question_Slide7.setVisible(false);
+			MainPanel.add(Question_Slide7);
+		//Slide 8
+			Question_Slide8 = new JLabel("If Connor had to choose 2, what ones would he pick?");
+			Question_Slide8.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide8.setBounds(25, 10, 700, 100);
+			Question_Slide8.setVisible(false);
+			MainPanel.add(Question_Slide8);
+		//Slide 9
+			Question_Slide9 = new JLabel("What are Connors Pronouns?");
+			Question_Slide9.setFont(new Font("Serif", Font.BOLD, 45));
+			Question_Slide9.setBounds(25, 10, 700, 100);
+			Question_Slide9.setVisible(false);
+			MainPanel.add(Question_Slide9);
 			
 		SLIDE_ONE();
 	}
@@ -159,13 +228,7 @@ public class qiz {
 		SLIDE_TWO();
 		});
 	}
-	
-		
-		
-
-	
 	public static void SLIDE_TWO() {
-		
 		//disable last slide
 		Title_Slide1.setVisible(false);
 		Title2_Slide1.setVisible(false);
@@ -173,23 +236,20 @@ public class qiz {
 		Title3_Slide1.setVisible(false);
 
 		//enable this slide
+		End_Button.setVisible(true);
 		Question_Slide2.setVisible(true);
 		Sep_Slide2.setVisible(true);
+		
 		Red_Button.setVisible(true);
 		Red_Button.addActionListener((ActionEvent g) -> {
 			SLIDE_THREE();
 			});
-		
-		Green_Button.setVisible(false);
+		Green_Button.setVisible(true);
 		Green_Button.addActionListener((ActionEvent g) -> {
 			SLIDE_THREE();
-			});
-
-
-		
+			});	
 	}
-	
-	public static void SLIDE_THREE() {
+		public static void SLIDE_THREE() {
 		//disable last slide
 		Question_Slide2.setVisible(false);
 		Sep_Slide2.setVisible(false);
@@ -198,12 +258,80 @@ public class qiz {
 		
 		//enable this slide
 		Question_Slide3.setVisible(true);
-
+		Answer_Slide3.setVisible(true);
+		Submit_Button1.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_FOUR();
+			});
 	}
-	public static void SLIDE_FOUR() {}
-	public static void SLIDE_FIVE() {}
-	public static void SLIDE_SIX() {}
-	public static void SLIDE_SEVEN() {}
+	public static void SLIDE_FOUR() {
+		//disable last slide
+		Question_Slide3.setVisible(false);
+		Answer_Slide3.setVisible(false);
+		
+		//Enable this slide
+		Question_Slide4.setVisible(true);
+		Answer_Slide4.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_FIVE();
+			});
+	}
+	public static void SLIDE_FIVE() {
+		Question_Slide4.setVisible(false);
+		Answer_Slide4.setVisible(false);
+
+		
+		Question_Slide5.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_SIX();
+		});
+	}
+	public static void SLIDE_SIX() {//buttons
+		Question_Slide5.setVisible(false);
+
+		
+		Question_Slide6.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_SEVEN();
+		});
+	}
+	public static void SLIDE_SEVEN() {//combo box
+		Question_Slide6.setVisible(false);
+	
+		
+		Question_Slide7.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_EIGHT();
+		});
+	}
+	public static void SLIDE_EIGHT() {//combo box
+		Question_Slide6.setVisible(false);
+
+		
+		Question_Slide7.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_NINE();
+		});
+	}
+	public static void SLIDE_NINE() {//Radio 
+		Question_Slide8.setVisible(false);
+
+		
+		Question_Slide9.setVisible(true);
+		Submit_Button1.addActionListener((ActionEvent f) -> {
+			SLIDE_TEN();
+		});
+	}
+	public static void SLIDE_TEN() {//Radio
+		Question_Slide9.setVisible(false);
+
+		Question_Slide10.setVisible(true);
+		
+	
+	}
+	
+
+
 }
 	
 
