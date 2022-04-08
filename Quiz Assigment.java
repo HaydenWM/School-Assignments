@@ -1,12 +1,14 @@
-package Quiz;
+
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -22,7 +24,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 
-public class Quiz {
+public class Quizclass {
     public static JFrame MainFrame;
     public static JPanel MainPanel;
 
@@ -96,20 +98,38 @@ public class Quiz {
         GUI();
     }
 
-    public static void GUI() {//this is where i make all of my swing stuff and juist set them to visible false
-
+    	public static void GUI() {//this is where i make all of my swing stuff and just set them to visible false
+    	//pictures 
+    		BufferedImage img1 = null;
+    		try {
+    			img1 = ImageIO.read(new File("/Connor1.jpeg"));
+    		} catch (IOException e) {
+    		    e.printStackTrace();
+    		}
+    		
+    		Image dimg = img1.getScaledInstance(600, 450, 100);
+    		
+    		//Creating image icons
+    		ImageIcon image1 = new ImageIcon(dimg);
+    		
+    		//image loading screen
+    		Title3_Slide1 = new JLabel(image1);
+    		Title3_Slide1.setBounds(350,100,600,450);
+    		MainPanel.add(Title3_Slide1);
+   
+    	
+    		
         // makes Frame thats used throughout
         MainFrame = new JFrame("Quiz");
         MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainFrame.setSize(800, 500);
-
+        MainFrame.setSize(800, 500);     
+        
         // makes panel used throughout
         MainPanel = new JPanel();
         MainPanel.setBackground(Color.LIGHT_GRAY);
         MainFrame.add(MainPanel);
         MainPanel.setLayout(null);
-
-        //last more than one slide
+        
         //These items stay until score tab
         End_Button = new JButton("END");
         End_Button.setBounds(25, 425, 75, 20);
@@ -137,28 +157,7 @@ public class Quiz {
         Start_Button.setVisible(false);
         MainPanel.add(Start_Button);
 
-        //all of this adds picture
-        /*
-        BufferedImage img1 = null;
-        try
-        {
-            img1 = ImageIO.read(new File("Connor.jpeg"));
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        assert img1 != null; // Jer note: deals with potential NullPointerException on image loading
-        Image dimg = img1.getScaledInstance(250,200, 100);
-
-        //Creating image icons
-        ImageIcon image1 = new ImageIcon(dimg);
-        */
-        //Adds picture as a label
-        Title3_Slide1 = new JLabel("image1");
-        Title3_Slide1.setBounds(450, 100, 250, 200);
-        Title3_Slide1.setVisible(false);
-        MainPanel.add(Title3_Slide1);
+      
 
         //Slide 2
 
@@ -486,4 +485,3 @@ public class Quiz {
 
     }
 }
-
